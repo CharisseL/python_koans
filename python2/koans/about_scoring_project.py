@@ -35,6 +35,22 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
+    if len(dice) > 5:
+        return None
+
+    numbers = {}.fromkeys(range(1,7), 0)
+    score = 0
+
+    for n in dice:
+        numbers[n] += 1
+
+    score += (numbers[1] // 3) * 1000
+    for n in range(2,7):
+        score += (numbers[n] // 3) * 100 * n
+    score += (numbers[1] % 3) * 100
+    score += (numbers[5] % 3) * 50
+
+    return score
     pass
 
 
